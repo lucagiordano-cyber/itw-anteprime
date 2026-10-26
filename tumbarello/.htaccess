@@ -1,0 +1,6 @@
+# Anteprima: le pagine si ricaricano sempre aggiornate (niente versioni vecchie in cache)
+<IfModule mod_headers.c>
+  <FilesMatch "\.(html|php)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+</IfModule>
