@@ -73,13 +73,7 @@
   <div class="flag"><i style="background:#1f8a4c"></i><i style="background:#d9dce3"></i><i style="background:#c8102e"></i></div>
   <h1 id="titolo">Piano video</h1>
   <p class="sub">Antonio Giordano · Facebook, Instagram e X · <span id="agg"></span></p>
-  <p class="hint">Per cambiare l'ordine <b>trascina una clip dai puntini ⠿</b>: le altre scalano, gli orari restano fissi. In <b>riserva</b> le clip si accumulano.</p>
-  <div class="legend">
-    <span class="pill p-pronto">Pronto</span>
-    <span class="pill p-montare">Da montare · si vede la clip grezza</span>
-  </div>
   <div class="cols"><div id="piano"></div><aside><h2>Ultimi pubblicati</h2><div id="pub"></div></aside></div>
-  <p class="foot">Quando una clip è montata, il tasto Guarda apre la versione finale. Il tasto Testo apre la trascrizione.</p>
 </div>
 <div class="toast" id="toast"></div>
 <script>
@@ -103,14 +97,14 @@ function disegna(){
       if(g.riserva&&!p.clip)continue;
       h.push('<div class="slot"><div class="time">'+(p.ora?esc(p.ora):'—')+'</div><div class="cell" data-posto="'+p.id+'">');
       const c=p.clip;
-      if(!c){h.push('<div class="empty">'+(API.startsWith('__')?'Libero':'Libero · trascina qui una clip')+'</div>');}
+      if(!c){h.push('<div class="empty">'+'Libero'+'</div>');}
       else{
         h.push('<div class="card'+(c.bloccata?' locked':'')+'"><div class="grip" title="Trascina per spostare">⠿</div><div class="info"><div class="title">'+esc(c.titolo)+'</div>'+(c.nota?'<div class="note">'+esc(c.nota)+'</div>':'')+'<span class="pill p-'+c.stato+'">'+(ETICHETTE[c.stato]||'')+'</span></div>'+'<div class="acts">'+(TESTI[idDrive(c.link)]?'<button class="tbtn'+(aperti.has(p.id)?' on':'')+'" data-testo="'+p.id+'">Testo</button>':'')+(c.link?'<a class="btn" href="'+esc(c.link)+'" target="_blank" rel="noopener">Guarda</a>':'<span class="soon">Presto</span>')+'</div></div>');
-        if(TESTI[idDrive(c.link)])h.push('<div class="testo'+(aperti.has(p.id)?' on':'')+'" id="t-'+p.id+'"><small>Trascrizione della clip grezza</small>'+esc(TESTI[idDrive(c.link)])+'</div>');
+        if(TESTI[idDrive(c.link)])h.push('<div class="testo'+(aperti.has(p.id)?' on':'')+'" id="t-'+p.id+'">'+esc(TESTI[idDrive(c.link)])+'</div>');
       }
       h.push('</div></div>');
     }
-    if(g.riserva&&!API.startsWith('__'))h.push('<div class="slot"><div class="time"></div><div class="cell" data-posto="riserva"><div class="empty">Trascina qui per mettere in riserva</div></div></div>');
+    if(g.riserva&&!API.startsWith('__'))h.push('<div class="slot"><div class="time"></div><div class="cell" data-posto="riserva"><div class="empty">+</div></div></div>');
     h.push('</section>');
   }
   document.getElementById('piano').innerHTML=h.join('');
