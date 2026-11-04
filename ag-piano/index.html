@@ -8,75 +8,154 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  :root{--ink:#14213d;--muted:#5b6475;--line:#e6e8ee;--bg:#f6f7fa;--card:#fff;
+  :root{--ink:#14213d;--muted:#5b6475;--line:#e6e8ee;--bg:#f6f7fa;--card:#fff;--drop:#1d5fd1;
         --ok:#1f8a4c;--okbg:#e7f5ec;--ready:#1d5fd1;--readybg:#e8f0fd;--cut:#a15c00;--cutbg:#fdf1e1;--res:#6b7280;--resbg:#eef0f3}
   *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.4}
-  .wrap{max-width:760px;margin:0 auto;padding:28px 16px 48px}
+  body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.4;-webkit-tap-highlight-color:transparent}
+  .wrap{max-width:1080px;margin:0 auto;padding:28px 16px 64px}
+  .cols{display:grid;grid-template-columns:minmax(0,1fr) 270px;gap:28px;align-items:start}
+  aside{position:sticky;top:16px;margin-top:26px}
+  aside h2{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:10px}
+  .pub{background:#eef0f3;border-radius:12px;padding:11px 13px;margin-bottom:8px;color:#6b7280}
+  .pub .t{font-weight:600;font-size:14px;color:#4b5263}
+  .pub .q{font-size:12.5px;margin-top:2px}
+  .pub .l{display:flex;gap:6px;margin-top:8px}
+  .pub .l a{font-size:12px;font-weight:700;text-decoration:none;color:#4b5263;background:#fff;border:1px solid #dfe2e8;border-radius:7px;padding:4px 8px}
+  .pub .l a:hover{color:var(--ink);border-color:#b9bfcb}
+  .nodrag .grip{display:none}.nodrag .card{padding-left:14px}.nodrag .hint{display:none}
+  @media (max-width:860px){.cols{grid-template-columns:1fr}aside{position:static}}
   .flag{display:flex;gap:4px;margin-bottom:14px}.flag i{width:22px;height:4px;border-radius:2px}
   h1{font-size:28px;font-weight:800;letter-spacing:-.02em}
   .sub{color:var(--muted);font-size:15px;margin-top:4px}
-  .legend{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}
+  .hint{margin-top:14px;font-size:14px;color:var(--muted)}
+  .hint b{color:var(--ink)}
+  .legend{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 6px}
   .day{margin-top:26px}
   .day h2{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:10px}
-  .day h2 b{color:var(--ink)}
-  .row{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:8px}
-  .time{font-weight:800;font-size:17px;min-width:52px;font-variant-numeric:tabular-nums}
+  .slot{display:flex;align-items:stretch;gap:12px;margin-bottom:8px}
+  .time{font-weight:800;font-size:17px;width:52px;flex-shrink:0;display:flex;align-items:center;font-variant-numeric:tabular-nums}
+  .cell{flex:1;min-width:0;border-radius:14px;transition:box-shadow .12s, background .12s}
+  .cell.over{box-shadow:0 0 0 3px var(--drop);background:#eef4ff}
+  .card{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px 12px 8px;user-select:none}
+  .grip{width:28px;align-self:stretch;display:flex;align-items:center;justify-content:center;color:#a3a9b6;font-size:20px;cursor:grab;touch-action:none;border-radius:8px}
+  .grip:hover{background:#f1f3f7;color:var(--ink)}
+  .card.locked .grip{visibility:hidden}
   .info{flex:1;min-width:0}
   .title{font-weight:600;font-size:16px}
   .note{color:var(--muted);font-size:13.5px;margin-top:3px}
-  .pill{display:inline-block;font-size:12px;font-weight:700;padding:3px 9px;border-radius:99px;white-space:nowrap}
-  .p-ok{color:var(--ok);background:var(--okbg)}.p-ready{color:var(--ready);background:var(--readybg)}
-  .p-cut{color:var(--cut);background:var(--cutbg)}.p-res{color:var(--res);background:var(--resbg)}
-  .info .pill{margin-top:7px}
+  .pill{display:inline-block;font-size:12px;font-weight:700;padding:3px 9px;border-radius:99px;white-space:nowrap;margin-top:7px}
+  .legend .pill{margin-top:0}
+  .p-pubblicato{color:var(--ok);background:var(--okbg)}.p-pronto{color:var(--ready);background:var(--readybg)}
+  .p-montare{color:var(--cut);background:var(--cutbg)}.p-arrivo,.p-fermo{color:var(--res);background:var(--resbg)}
   a.btn{flex-shrink:0;text-decoration:none;font-weight:700;font-size:14px;color:#fff;background:var(--ink);padding:10px 16px;border-radius:10px}
   a.btn:hover{opacity:.88}
   .soon{flex-shrink:0;font-size:13px;color:var(--muted)}
+  .empty{border:2px dashed var(--line);border-radius:14px;padding:16px;color:#a3a9b6;font-size:14px;text-align:center}
+  .ghost{position:fixed;z-index:50;pointer-events:none;opacity:.95;box-shadow:0 12px 32px rgba(20,33,61,.22);transform:rotate(1.5deg)}
+  .dragging{opacity:.35}
+  .toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:11px 18px;border-radius:12px;font-size:14px;font-weight:600;opacity:0;transition:opacity .2s;max-width:92vw;text-align:center}
+  .toast.on{opacity:1}
   .foot{margin-top:30px;color:var(--muted);font-size:13.5px}
-  @media (max-width:480px){.row{flex-wrap:wrap;gap:8px 12px}.info{flex-basis:calc(100% - 66px)}a.btn,.soon{margin-left:64px}}
+  @media (max-width:480px){.card{flex-wrap:wrap;gap:6px 10px}.info{flex-basis:calc(100% - 40px)}a.btn,.soon{margin-left:38px}}
 </style>
 </head>
 <body>
 <div class="wrap">
   <div class="flag"><i style="background:#1f8a4c"></i><i style="background:#d9dce3"></i><i style="background:#c8102e"></i></div>
-  <h1>Piano video · 4-7 novembre</h1>
-  <p class="sub">Antonio Giordano · Facebook, Instagram e X · aggiornato mer 4/11 ore 13:15</p>
+  <h1 id="titolo">Piano video</h1>
+  <p class="sub">Antonio Giordano · Facebook, Instagram e X · <span id="agg"></span></p>
+  <p class="hint">Per cambiare l'ordine <b>trascina una clip dai puntini ⠿</b> sopra un'altra: si scambiano, gli orari restano fissi.</p>
   <div class="legend">
-    <span class="pill p-ok">Pubblicato</span>
-    <span class="pill p-ready">Pronto</span>
-    <span class="pill p-cut">Da montare · si vede la clip grezza</span>
+    <span class="pill p-pubblicato">Pubblicato</span>
+    <span class="pill p-pronto">Pronto</span>
+    <span class="pill p-montare">Da montare · si vede la clip grezza</span>
   </div>
-
-  <section class="day"><h2><b>Oggi</b> · mercoledì 4</h2>
-    <div class="row"><div class="time">10:38</div><div class="info"><div class="title">Guerra cognitiva</div><span class="pill p-ok">Pubblicato</span></div><a class="btn" href="https://drive.google.com/file/d/18uKNfIvqeaj1Cc6gWymz265c_iHXIJvO/view" target="_blank" rel="noopener">Guarda</a></div>
-    <div class="row"><div class="time">13:30</div><div class="info"><div class="title">Card 4 Novembre · Forze Armate</div><div class="note">Post e storia</div><span class="pill p-ready">Pronto</span></div><a class="btn" href="https://drive.google.com/file/d/1lxUd-AaJWPnb-GFV7wUS1v083XZnInpP/view" target="_blank" rel="noopener">Guarda</a></div>
-    <div class="row"><div class="time">17:00</div><div class="info"><div class="title">Midterm · le reazioni di Trump</div><div class="note">Corrente Alternata, clip 3</div><span class="pill p-cut">Da montare</span></div><a class="btn" href="https://drive.google.com/file/d/14lvX-w2EIIIJXxvO04kaBue8WVZVjnrJ/view" target="_blank" rel="noopener">Guarda</a></div>
-  </section>
-
-  <section class="day"><h2><b>Domani</b> · giovedì 5</h2>
-    <div class="row"><div class="time">08:30</div><div class="info"><div class="title">Midterm · lo scenario dopo il voto</div><div class="note">Corrente Alternata, clip 2</div><span class="pill p-cut">Da montare</span></div><a class="btn" href="https://drive.google.com/file/d/1klEdiMiUnjdyJhWDykBXf9HR2sEq2nfJ/view" target="_blank" rel="noopener">Guarda</a></div>
-    <div class="row"><div class="time">13:00</div><div class="info"><div class="title">Riserve di gas</div><div class="note">Di nuovo su Facebook</div><span class="pill p-ready">Pronto</span></div><a class="btn" href="https://drive.google.com/file/d/1ZFEdKkByH8KjIz5oDjrU8ere_Mj9_LGd/view" target="_blank" rel="noopener">Guarda</a></div>
-    <div class="row"><div class="time">18:30</div><div class="info"><div class="title">Meloni e Trump</div><div class="note">Corrente Alternata, clip 4</div><span class="pill p-cut">Da montare</span></div><a class="btn" href="https://drive.google.com/file/d/1X7SISQDF3iCLM8yexoOGo2FyZCFK6EWm/view" target="_blank" rel="noopener">Guarda</a></div>
-  </section>
-
-  <section class="day"><h2>Venerdì 6</h2>
-    <div class="row"><div class="time">08:30</div><div class="info"><div class="title">Socialismo USA · «quello che facciamo noi»</div><div class="note">Coffee Break, clip 5</div><span class="pill p-cut">Da montare</span></div><a class="btn" href="https://drive.google.com/file/d/1HcMYuJhqfVNx6eUlo4WkuSOiRbY334NX/view" target="_blank" rel="noopener">Guarda</a></div>
-    <div class="row"><div class="time">13:00</div><div class="info"><div class="title">Ricchi e populismo</div><div class="note">Corrente Alternata · audio</div><span class="pill p-cut">Da montare</span></div><a class="btn" href="https://drive.google.com/file/d/1neHQFR6Z3BcoS3G2aM8lRp03fYhDdQpO/view" target="_blank" rel="noopener">Guarda</a></div>
-    <div class="row"><div class="time">18:30</div><div class="info"><div class="title">Dopo il voto · Italia, USA e NATO</div><div class="note">Corrente Alternata, clip 5</div><span class="pill p-cut">Da montare</span></div><a class="btn" href="https://drive.google.com/file/d/1t6I8kJFrz6hPRG6raNgOFs16UjAzwkPo/view" target="_blank" rel="noopener">Guarda</a></div>
-  </section>
-
-  <section class="day"><h2>Sabato 7</h2>
-    <div class="row"><div class="time">10:00</div><div class="info"><div class="title">Riunione NATO</div><div class="note">Coffee Break, clip 6</div><span class="pill p-cut">Da montare</span></div><a class="btn" href="https://drive.google.com/file/d/1SCrquixqGnR_g_YOyTtNFZ3MwOOwfgSG/view" target="_blank" rel="noopener">Guarda</a></div>
-  </section>
-
-  <section class="day"><h2>In riserva</h2>
-    <div class="row"><div class="time">—</div><div class="info"><div class="title">Alternanza di potere</div><div class="note">Corrente Alternata, clip 1</div><span class="pill p-cut">Da montare</span></div><a class="btn" href="https://drive.google.com/file/d/10z88m8ihysl4KQqzH6gUBhlDENREeHxE/view" target="_blank" rel="noopener">Guarda</a></div>
-    <div class="row"><div class="time">—</div><div class="info"><div class="title">Deformazione cognitiva</div><div class="note">Corrente Alternata · audio · dall'11/11, stesso tema di Guerra cognitiva</div><span class="pill p-cut">Da montare</span></div><a class="btn" href="https://drive.google.com/file/d/1WDDEr0nzlL647d0kYZhlvtLduYlRIaiI/view" target="_blank" rel="noopener">Guarda</a></div>
-    <div class="row"><div class="time">—</div><div class="info"><div class="title">Midterm del 3/11</div><div class="note">Girato prima del voto: lo sostituiscono le clip di oggi</div><span class="pill p-res">Non si ripubblica</span></div><a class="btn" href="https://drive.google.com/file/d/1PBAMD2skElGYd6v9zxLKPcCp911eqGsb/view" target="_blank" rel="noopener">Guarda</a></div>
-    <div class="row"><div class="time">—</div><div class="info"><div class="title">Prisma · Radio Glox di oggi</div><div class="note">In registrazione alle 13:30</div><span class="pill p-res">In arrivo</span></div><span class="soon">Presto</span></div>
-  </section>
-
+  <div class="cols"><div id="piano"></div><aside><h2>Ultimi pubblicati</h2><div id="pub"></div></aside></div>
   <p class="foot">Quando una clip è montata, il tasto Guarda apre la versione finale.</p>
 </div>
+<div class="toast" id="toast"></div>
+<script>
+const API = "__API__";
+const ETICHETTE = {pubblicato:'Pubblicato', pronto:'Pronto', montare:'Da montare', arrivo:'In arrivo', fermo:'Non si ripubblica'};
+let stato = {"titolo": "Piano video · 4-7 novembre", "giorni": [{"titolo": "Oggi · mercoledì 4", "posti": [{"id": "me4-3", "ora": "17:00", "clip": {"titolo": "Midterm · le reazioni di Trump", "nota": "Corrente Alternata, clip 3", "stato": "montare", "link": "https://drive.google.com/file/d/14lvX-w2EIIIJXxvO04kaBue8WVZVjnrJ/view"}}]}, {"titolo": "Domani · giovedì 5", "posti": [{"id": "gi5-1", "ora": "08:30", "clip": {"titolo": "Midterm · lo scenario dopo il voto", "nota": "Corrente Alternata, clip 2", "stato": "montare", "link": "https://drive.google.com/file/d/1klEdiMiUnjdyJhWDykBXf9HR2sEq2nfJ/view"}}, {"id": "gi5-2", "ora": "13:00", "clip": {"titolo": "Riserve di gas", "nota": "Di nuovo su Facebook", "stato": "pronto", "link": "https://drive.google.com/file/d/1ZFEdKkByH8KjIz5oDjrU8ere_Mj9_LGd/view"}}, {"id": "gi5-3", "ora": "18:30", "clip": {"titolo": "Meloni e Trump", "nota": "Corrente Alternata, clip 4", "stato": "montare", "link": "https://drive.google.com/file/d/1X7SISQDF3iCLM8yexoOGo2FyZCFK6EWm/view"}}]}, {"titolo": "Venerdì 6", "posti": [{"id": "ve6-1", "ora": "08:30", "clip": {"titolo": "Socialismo USA · «quello che facciamo noi»", "nota": "Coffee Break, clip 5", "stato": "montare", "link": "https://drive.google.com/file/d/1HcMYuJhqfVNx6eUlo4WkuSOiRbY334NX/view"}}, {"id": "ve6-2", "ora": "13:00", "clip": {"titolo": "Ricchi e populismo", "nota": "Corrente Alternata · audio", "stato": "montare", "link": "https://drive.google.com/file/d/1neHQFR6Z3BcoS3G2aM8lRp03fYhDdQpO/view"}}, {"id": "ve6-3", "ora": "18:30", "clip": {"titolo": "Dopo il voto · Italia, USA e NATO", "nota": "Corrente Alternata, clip 5", "stato": "montare", "link": "https://drive.google.com/file/d/1t6I8kJFrz6hPRG6raNgOFs16UjAzwkPo/view"}}]}, {"titolo": "Sabato 7", "posti": [{"id": "sa7-1", "ora": "10:00", "clip": {"titolo": "Riunione NATO", "nota": "Coffee Break, clip 6", "stato": "montare", "link": "https://drive.google.com/file/d/1SCrquixqGnR_g_YOyTtNFZ3MwOOwfgSG/view"}}, {"id": "sa7-2", "ora": "13:00", "clip": null}, {"id": "sa7-3", "ora": "18:30", "clip": null}]}, {"titolo": "In riserva", "riserva": true, "posti": [{"id": "r1", "ora": "", "clip": {"titolo": "Alternanza di potere", "nota": "Corrente Alternata, clip 1", "stato": "montare", "link": "https://drive.google.com/file/d/10z88m8ihysl4KQqzH6gUBhlDENREeHxE/view"}}, {"id": "r2", "ora": "", "clip": {"titolo": "Deformazione cognitiva", "nota": "Corrente Alternata · audio · dall'11/11, stesso tema di Guerra cognitiva", "stato": "montare", "link": "https://drive.google.com/file/d/1WDDEr0nzlL647d0kYZhlvtLduYlRIaiI/view"}}, {"id": "r3", "ora": "", "clip": {"titolo": "Prisma · Radio Glox di oggi", "nota": "Registrata alle 13:30, clip in arrivo", "stato": "arrivo"}}, {"id": "r5", "ora": "", "clip": null}, {"id": "r6", "ora": "", "clip": null}]}], "pubblicati": [{"titolo": "Card 4 Novembre · Forze Armate", "quando": "mer 4/11 · 13:24", "fb": "https://www.facebook.com/1154435890870280/posts/1155160294131173", "ig": "https://www.instagram.com/p/DfUcReFDcfa/", "x": "https://x.com/Giordano__Ant/status/2117955550688444774"}, {"titolo": "Guerra cognitiva", "quando": "mer 4/11 · 10:38", "fb": "https://www.facebook.com/reel/1809075533746298/", "ig": "https://www.instagram.com/reel/DfUKutsghDZ/", "x": "https://x.com/Giordano__Ant/status/2117917504861315501"}, {"titolo": "Midterm (prima del voto)", "quando": "mar 3/11 · 18:30", "fb": "https://www.facebook.com/reel/1905529590880201/", "ig": "https://www.instagram.com/reel/DfSduWrgQ7_/", "x": "https://x.com/Giordano__Ant/status/2117678229246927253"}, {"titolo": "Riserve di gas", "quando": "mar 3/11 · 14:00", "fb": "https://www.facebook.com/reel/1151009277470797/", "ig": "https://www.instagram.com/reel/DfR8IrTkWat/", "x": "https://x.com/Giordano__Ant/status/2117606616744804792"}, {"titolo": "Patrimoniale", "quando": "lun 2/11 · 12:56", "fb": "https://www.facebook.com/reel/1839627413895111/", "ig": "https://www.instagram.com/reel/DfPQCNhjGkq/", "x": "https://x.com/Giordano__Ant/status/2117228622868034010"}]};
+
+function esc(s){return String(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+function trova(id){for(const g of stato.giorni)for(const p of g.posti)if(p.id===id)return p;return null;}
+
+function disegna(){
+  document.getElementById('titolo').textContent = stato.titolo || 'Piano video';
+  if (stato.aggiornato){const d=new Date(stato.aggiornato);document.getElementById('agg').textContent='aggiornato '+d.toLocaleDateString('it-IT',{weekday:'short',day:'numeric',month:'numeric'})+' ore '+d.toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit'});}
+  const h=[];
+  for(const g of stato.giorni){
+    h.push('<section class="day"><h2>'+esc(g.titolo)+'</h2>');
+    for(const p of g.posti){
+      h.push('<div class="slot"><div class="time">'+(p.ora?esc(p.ora):'—')+'</div><div class="cell" data-posto="'+p.id+'">');
+      const c=p.clip;
+      if(!c){h.push('<div class="empty">Libero · trascina qui una clip</div>');}
+      else{
+        h.push('<div class="card'+(c.bloccata?' locked':'')+'"><div class="grip" title="Trascina per spostare">⠿</div><div class="info"><div class="title">'+esc(c.titolo)+'</div>'+(c.nota?'<div class="note">'+esc(c.nota)+'</div>':'')+'<span class="pill p-'+c.stato+'">'+(ETICHETTE[c.stato]||'')+'</span></div>'+(c.link?'<a class="btn" href="'+esc(c.link)+'" target="_blank" rel="noopener">Guarda</a>':'<span class="soon">Presto</span>')+'</div>');
+      }
+      h.push('</div></div>');
+    }
+    h.push('</section>');
+  }
+  document.getElementById('piano').innerHTML=h.join('');
+  const L={fb:'Facebook',ig:'Instagram',x:'X'};
+  document.getElementById('pub').innerHTML=(stato.pubblicati||[]).map(p=>'<div class="pub"><div class="t">'+esc(p.titolo)+'</div><div class="q">'+esc(p.quando)+'</div><div class="l">'+['fb','ig','x'].filter(k=>p[k]).map(k=>'<a href="'+esc(p[k])+'" target="_blank" rel="noopener">'+L[k]+'</a>').join('')+'</div></div>').join('')||'<div class="pub">Nessuno</div>';
+}
+
+function avviso(t){const el=document.getElementById('toast');el.textContent=t;el.classList.add('on');clearTimeout(avviso.t);avviso.t=setTimeout(()=>el.classList.remove('on'),2600);}
+
+async function carica(){
+  if(API.startsWith('__'))return;
+  try{const r=await fetch(API,{cache:'no-store'});const s=await r.json();if(s&&s.giorni){stato=s;if(!trascino)disegna();}}catch(e){}
+}
+
+async function scambia(a,b){
+  const pa=trova(a),pb=trova(b);
+  if(!pa||!pb||a===b)return;
+  if((pa.clip&&pa.clip.bloccata)||(pb.clip&&pb.clip.bloccata)){avviso('Questa clip è già pubblicata: resta al suo posto');return;}
+  const nome=pa.clip?pa.clip.titolo:'';
+  const t=pa.clip;pa.clip=pb.clip;pb.clip=t;disegna();
+  if(API.startsWith('__')){avviso('Spostato (non ancora salvato)');return;}
+  try{
+    const r=await fetch(API,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({op:'scambia',a,b})});
+    const s=await r.json();
+    if(s.errore){if(s.stato){stato=s.stato;disegna();}avviso('Non salvato, riprova');return;}
+    stato=s;disegna();avviso('Spostato e salvato: '+nome+(pb.ora?' alle '+pb.ora:''));
+  }catch(e){avviso('Non salvato: controlla la connessione');}
+}
+
+// Trascinamento (mouse e dito), solo dai puntini
+let trascino=null;
+document.addEventListener('pointerdown',e=>{
+  if(API.startsWith('__'))return;
+  const g=e.target.closest('.grip');if(!g)return;
+  const card=g.closest('.card');if(card.classList.contains('locked'))return;
+  e.preventDefault();
+  const cell=card.closest('.cell');const r=card.getBoundingClientRect();
+  const ghost=card.cloneNode(true);ghost.classList.add('ghost');ghost.style.width=r.width+'px';ghost.style.left=r.left+'px';ghost.style.top=r.top+'px';
+  document.body.appendChild(ghost);card.classList.add('dragging');
+  trascino={da:cell.dataset.posto,ghost,card,dx:e.clientX-r.left,dy:e.clientY-r.top,sopra:null};
+  g.setPointerCapture&&g.setPointerCapture(e.pointerId);
+});
+document.addEventListener('pointermove',e=>{
+  if(!trascino)return;
+  trascino.ghost.style.left=(e.clientX-trascino.dx)+'px';trascino.ghost.style.top=(e.clientY-trascino.dy)+'px';
+  const el=document.elementFromPoint(e.clientX,e.clientY);const c=el&&el.closest('.cell');
+  if(trascino.sopra&&trascino.sopra!==c)trascino.sopra.classList.remove('over');
+  if(c&&c.dataset.posto!==trascino.da){c.classList.add('over');trascino.sopra=c;}else trascino.sopra=null;
+  if(e.clientY<60)window.scrollBy(0,-12);else if(e.clientY>window.innerHeight-60)window.scrollBy(0,12);
+});
+function fine(){
+  if(!trascino)return;
+  const t=trascino;trascino=null;t.ghost.remove();t.card.classList.remove('dragging');
+  if(t.sopra){t.sopra.classList.remove('over');scambia(t.da,t.sopra.dataset.posto);}
+}
+document.addEventListener('pointerup',fine);document.addEventListener('pointercancel',fine);
+
+if(API.startsWith('__'))document.body.classList.add('nodrag');
+disegna();carica();setInterval(carica,20000);
+</script>
 </body>
 </html>
