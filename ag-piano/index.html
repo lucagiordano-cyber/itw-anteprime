@@ -66,13 +66,20 @@
   button.tbtn.on{background:#eef0f3}
   .acts{display:flex;gap:8px;flex-shrink:0;align-items:center}
   @media (max-width:480px){.acts{margin-left:38px}.nodrag .acts{margin-left:0}}
+  .testa{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  a.cliptv{flex-shrink:0;display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:14px;color:var(--ink);background:#fff;border:1px solid #cfd4dd;padding:10px 14px;border-radius:10px;text-decoration:none;margin-top:4px}
+  a.cliptv:hover{border-color:var(--ink)}
+  a.cliptv svg{width:16px;height:16px}
 </style>
 </head>
 <body>
 <div class="wrap">
   <div class="flag"><i style="background:#1f8a4c"></i><i style="background:#d9dce3"></i><i style="background:#c8102e"></i></div>
-  <h1 id="titolo">Piano video</h1>
-  <p class="sub">Antonio Giordano · Facebook, Instagram e X · <span id="agg"></span></p>
+  <div class="testa">
+    <div><h1 id="titolo">Piano video</h1>
+    <p class="sub">Antonio Giordano · Facebook, Instagram e X · <span id="agg"></span></p></div>
+    <a class="cliptv" href="https://docs.google.com/spreadsheets/d/1lVeEMsBfpW6uaEP1y1r7hGsROVtyXTjPbZc-AcV3ino/edit" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="m10 9 5 3-5 3z"/></svg>Clip TV</a>
+  </div>
   <div class="cols"><div id="piano"></div><aside><h2>Ultimi pubblicati</h2><div id="pub"></div></aside></div>
 </div>
 <div class="toast" id="toast"></div>
