@@ -206,7 +206,7 @@ dialog#scheda[open]{grid-template-columns:1fr;max-height:88vh;overflow-y:auto}
 .sch-a .btn{width:100%;justify-content:center}
 }
 @media(prefers-reduced-motion:reduce){.c,.c .ph img{transition:none}.pin:after{animation:none}}
-</style></head><body>
+p,li,dd,.lead{text-wrap:pretty}h1,h2,h3,h4{text-wrap:balance}</style></head><body>
 <div id="bar" class="bar"><div class="wrap"><a href="#"><img src="img/logo.png" alt="Lady Pizza"></a><nav><a href="#cat">Catalogo</a><a href="#chi-siamo">Chi siamo</a><a href="#contatti">Contatti</a></nav><a class="call" href="tel:+390670161571">Chiama</a></div></div>
 <div id="mbar" class="mbar"><a href="tel:+390670161571">Chiama</a><a href="https://wa.me/393511499341">WhatsApp</a></div>
 
@@ -268,6 +268,26 @@ var PRODOTTI=[
 var CONS={ATM:'In frigo, in atmosfera modificata: 30 giorni di riferimento.',GELO:'Surgelata, in freezer: 12 mesi di riferimento.'};
 var WA='https://wa.me/393511499341';
 var LAB=[41.9366346,12.4234793];
+/* ---- a capo curati (Luca 28/09, 12/10, 05/11/2026): parole brevi legate alla successiva,
+   frase breve dopo la virgola tutta insieme, prime e ultime due parole di una frase insieme ---- */
+var BREVI='il lo la i gli le un una uno di a da in con su per tra fra e ed o ma che non se al allo alla ai agli alle del dello della dei degli delle dal dallo dalla dai dagli dalle nel nello nella nei negli nelle sul sulla sui come anche più ogni'.split(' ');
+function glue(root){
+ var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,null),nodi=[],n;
+ while((n=w.nextNode())){var p=n.parentElement;if(!p||p.closest('script,style,select,option,textarea,.leaflet-container'))continue;if(!/\s/.test(n.nodeValue))continue;nodi.push(n)}
+ nodi.forEach(function(n){
+  var el=n.parentElement.closest('p,li,h1,h2,h3,h4,dd,span,b,a,i,em,div')||n.parentElement;
+  var fs=parseFloat(getComputedStyle(el).fontSize)||16,box=(el.closest('p,li,h1,h2,h3,h4,dd,ul,div')||el).clientWidth||320;
+  var maxc=Math.max(14,Math.floor(box/(fs*0.56)*0.72));
+  var t=n.nodeValue;
+  /* 1. parola breve o con apostrofo + parola successiva */
+  t=t.replace(/(?<=^|[\s («])([A-Za-zÀ-ÿ]{1,5}|[A-Za-zÀ-ÿ]+['’])\s+(?=\S)/g,function(m,wd){var l=wd.toLowerCase();return (BREVI.indexOf(l)>-1||/['’]$/.test(wd))?wd+' ':m});
+  /* 2. dopo virgola o due punti: frase breve tutta insieme */
+  t=t.replace(/([,:])\s+([^,.;:!?]+?)(?=[,.;:!?]|$)/g,function(m,seg,fr){var f=fr.trim(),pz=f.split(/[ \t\n]+/),fine=/\s$/.test(fr)?' ':'';if(f.length<=maxc&&pz.length<=6)return seg+' '+pz.join(' ')+fine;if(pz.length>2)return seg+' '+pz.slice(0,2).join(' ')+' '+pz.slice(2).join(' ')+fine;return m});
+  /* 3. ultime due parole prima del punto e prime due dopo il punto */
+  t=t.replace(/(\S+)\s+(\S+[.!?…])(?=\s|$)/g,'$1 $2');
+  t=t.replace(/([.!?…]\s+)(\S+)\s+(?=\S)/g,'$1$2 ');
+  n.nodeValue=t});
+}
 
 (function(){
 var d=document.documentElement;d.classList.add('js');
@@ -302,7 +322,7 @@ function apri(id){var p=byId(id);if(!p)return;corrente=p;
  r.push(['Conservazione',p.linee.map(function(l){return CONS[l]}).join('<br>')]);
  if(p.ingr)r.push(['Ingredienti',p.ingr]);
  dlg.querySelector('dl').innerHTML=r.map(function(x){return '<dt>'+x[0]+'</dt><dd>'+x[1]+'</dd>'}).join('');
- if(dlg.showModal)dlg.showModal();else dlg.setAttribute('open','');aperta=true}
+ if(dlg.showModal)dlg.showModal();else dlg.setAttribute('open','');aperta=true;glue(dlg)}
 function chiudi(){if(dlg.close)dlg.close();else{dlg.removeAttribute('open');aperta=false}}
 dlg.querySelector('.chiudi').addEventListener('click',chiudi);
 dlg.addEventListener('click',function(e){if(e.target===dlg)chiudi()});
@@ -373,6 +393,7 @@ function mappa(){if(!window.L||mp.dataset.ok)return;mp.dataset.ok=1;
  if(innerWidth>760)m.panBy([-170,20],{animate:false})}
 if('IntersectionObserver' in window){new IntersectionObserver(function(en,o){if(en[0].isIntersecting){mappa();o.disconnect()}},{rootMargin:'600px 0px'}).observe(mp)}else mappa();
 
+glue(document.body);
 /* ---- comparsa allo scorrimento (come la v3) e barre fisse ---- */
 var els=document.querySelectorAll('main h2,main .lead,.cv-ph,.righe li,.sos,.lh,.fascia .slg,.fascia .chi,.impf,.testo p,.pts li,.end,.dove,.fg>div,.eyebrow');
 els.forEach(function(e){e.classList.add('rv')});
