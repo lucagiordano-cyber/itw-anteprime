@@ -65,9 +65,10 @@ html.js .hero .pic{animation:entra .9s ease-out .15s both}
 /* Catalogo: due fasce */
 #cat{padding:20px 0 0}
 #cat>.wrap .lead{margin-bottom:0}
-.linea{position:relative;margin-top:44px;padding:54px 0 46px;overflow:hidden}
-.linea.atm{background:radial-gradient(1200px 420px at 12% 0%,rgba(244,169,26,.16),transparent 70%),linear-gradient(180deg,#22180f,#1a130e)}
-.linea.gelo{margin-top:0;background:radial-gradient(1200px 420px at 12% 0%,rgba(142,197,232,.16),transparent 70%),linear-gradient(180deg,#121b24,#0f151c)}
+.fasce{position:relative;margin-top:36px;overflow:hidden;background:linear-gradient(180deg,#3a280f 0%,#2b2012 28%,#1e1d1c 50%,#17222d 74%,#0f1a24 100%);box-shadow:inset 0 70px 90px -60px rgba(255,214,140,.22),inset 0 0 110px rgba(0,0,0,.5)}
+.linea{position:relative;margin-top:0;padding:54px 0 46px}
+.linea+.linea{padding-top:30px}
+.c{box-shadow:0 22px 30px -18px rgba(0,0,0,.7)}
 .lh{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:28px}
 .lh-t{display:grid;grid-template-columns:auto 1fr;column-gap:28px;align-items:start}
 /* sigla e titolo tagliati sull'altezza delle maiuscole (Anton: asc 1.18, disc .33, maiuscole .859) e spostati a sinistra dello spazio interno del carattere: bordo ottico sullo stesso filo dei puntini */
@@ -81,7 +82,7 @@ html.js .hero .pic{animation:entra .9s ease-out .15s both}
 .gelo .frecce button:hover,.gelo .frecce button:focus-visible{border-color:#8EC5E8;background:rgba(142,197,232,.12)}
 .vista{overflow:hidden;touch-action:pan-y;cursor:grab;-webkit-mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent)}
 .vista.tira{cursor:grabbing}
-.nastro{display:flex;gap:20px;width:max-content;padding:10px 0 18px;will-change:transform}
+.nastro{display:flex;gap:20px;width:max-content;padding:10px 0 34px;will-change:transform}
 .c{width:272px;flex:0 0 auto;background:#1e1611;border:1px solid #33271f;border-radius:24px;overflow:hidden;display:flex;flex-direction:column;text-align:left;font:inherit;color:inherit;padding:0;cursor:pointer;transition:transform .35s cubic-bezier(.2,.8,.2,1),border-color .3s,box-shadow .35s;user-select:none;-webkit-user-drag:none}
 .gelo .c{background:#151e27;border-color:#24323f}
 .c:focus-visible{transform:translateY(-6px);border-color:var(--y);box-shadow:0 28px 50px -26px rgba(0,0,0,.9)}
@@ -188,7 +189,7 @@ dialog#scheda[open]{display:grid;grid-template-columns:1fr 1.05fr}
 .righe b{font-size:1.4rem}
 .sos{flex-direction:column;align-items:flex-start;padding:20px;margin-top:40px}
 .sos .btn{width:100%}
-.linea{padding:40px 0 34px;margin-top:32px}
+.fasce{margin-top:24px}.linea{padding:40px 0 20px;margin-top:0}.linea+.linea{padding-top:24px}
 .lh{flex-direction:column;align-items:flex-start;gap:16px}
 .lh-t{display:block}
 .sigla{font-size:4rem;margin-bottom:calc(14px - .075em)}
@@ -223,15 +224,14 @@ body{background:var(--paper);color:#17110D}
 .sos{background:linear-gradient(90deg,rgba(244,169,26,.2),rgba(244,169,26,.04) 70%)}
 .sos p{color:#17110D}
 /* Catalogo: fasce calda e fredda, ora chiare */
-.linea.atm{background:radial-gradient(1200px 420px at 12% 0%,rgba(244,169,26,.34),transparent 70%),linear-gradient(180deg,#FFF0CE,#FBE2AE)}
-.linea.gelo{background:radial-gradient(1200px 420px at 12% 0%,rgba(142,197,232,.5),transparent 70%),linear-gradient(180deg,#EAF4FB,#D3E7F4)}
+.fasce{background:linear-gradient(180deg,#FFE6B0 0%,#FCEBCB 28%,#F3F0E8 50%,#DDEBF5 74%,#C6DEEE 100%);box-shadow:inset 0 70px 90px -60px rgba(255,255,255,.9),inset 0 0 110px rgba(23,17,13,.16)}
 .sigla{color:#B86F00}.gelo .sigla{color:#2A6F9E}
 .lh h3{color:#17110D}
 .fatti{color:#3a2d25}.fatti li:before{background:#C27A00}.gelo .fatti li:before{background:#2A6F9E}
 .frecce button{border-color:rgba(23,17,13,.28);background:rgba(255,255,255,.7);color:#17110D}
 .frecce button:hover,.frecce button:focus-visible{border-color:#C27A00;background:#fff}
 .gelo .frecce button:hover,.gelo .frecce button:focus-visible{border-color:#2A6F9E;background:#fff}
-.c{background:#fff;border-color:#EBD9B8;box-shadow:0 1px 2px rgba(23,17,13,.06),0 16px 30px -20px rgba(23,17,13,.38)}
+.c{background:#fff;border-color:#EBD9B8;box-shadow:0 1px 2px rgba(23,17,13,.06),0 22px 28px -18px rgba(23,17,13,.45)}
 .gelo .c{background:#fff;border-color:#C6DDEC}
 .c:focus-visible{border-color:#C27A00;box-shadow:0 28px 46px -26px rgba(23,17,13,.5)}
 .gelo .c:focus-visible{border-color:#2A6F9E}
@@ -304,9 +304,9 @@ dialog#scheda::backdrop{background:rgba(23,17,13,.55)}
 </div></section>
 
 <section id="cat">
-<div class="wrap"><h2>Scegli la base per il tuo locale</h2><p class="lead">Tocca un prodotto per vedere la&nbsp;scheda.</p></div>
-<div class="linea atm" data-linea="ATM"><div class="wrap lh"><div class="lh-t"><span class="sigla">ATM</span><div><h3>In frigo</h3><ul class="fatti"><li>Confezionate in atmosfera modificata</li><li>Fino a 30 giorni</li><li>Solo basi bianche</li></ul></div></div><div class="frecce"><button type="button" data-v="-1" aria-label="Prodotto precedente"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button><button type="button" data-v="1" aria-label="Prodotto successivo"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button></div></div><div class="vista"><div class="nastro"></div></div></div>
-<div class="linea gelo" data-linea="GELO"><div class="wrap lh"><div class="lh-t"><span class="sigla">GELO</span><div><h3>In freezer</h3><ul class="fatti"><li>Surgelate</li><li>Fino a 12 mesi</li><li>Basi bianche e pizze già condite</li></ul></div></div><div class="frecce"><button type="button" data-v="-1" aria-label="Prodotto precedente"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button><button type="button" data-v="1" aria-label="Prodotto successivo"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button></div></div><div class="vista"><div class="nastro"></div></div></div>
+<div class="wrap"><h2>Scegli la base per il tuo locale</h2></div>
+<div class="fasce"><div class="linea atm" data-linea="ATM"><div class="wrap lh"><div class="lh-t"><span class="sigla">ATM</span><div><h3>In frigo</h3><ul class="fatti"><li>Confezionate in atmosfera modificata</li><li>Fino a 30 giorni</li><li>Solo basi bianche</li></ul></div></div><div class="frecce"><button type="button" data-v="-1" aria-label="Prodotto precedente"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button><button type="button" data-v="1" aria-label="Prodotto successivo"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button></div></div><div class="vista"><div class="nastro"></div></div></div>
+<div class="linea gelo" data-linea="GELO"><div class="wrap lh"><div class="lh-t"><span class="sigla">GELO</span><div><h3>In freezer</h3><ul class="fatti"><li>Surgelate</li><li>Fino a 12 mesi</li><li>Basi bianche e pizze già condite</li></ul></div></div><div class="frecce"><button type="button" data-v="-1" aria-label="Prodotto precedente"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button><button type="button" data-v="1" aria-label="Prodotto successivo"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button></div></div><div class="vista"><div class="nastro"></div></div></div></div>
 </section>
 
 <section class="fascia" aria-label="Roman Craft. Global Standard."><img src="img/teglia.jpg" alt="" loading="lazy"><div class="wrap"><p class="slg"><span>Roman Craft.</span> <em>Global Standard.</em></p><p class="chi">Lady Pizza · Roma, dal 2006</p></div></section>
