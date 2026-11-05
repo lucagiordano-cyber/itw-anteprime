@@ -30,7 +30,7 @@ section{padding:96px 0}h2{font-size:clamp(2.6rem,6vw,4.6rem);margin-bottom:14px}
 .mbar{display:none}
 @media(max-width:760px){.bar{display:none}.mbar{display:grid;grid-template-columns:1fr 1fr;gap:10px;position:fixed;left:12px;right:12px;bottom:12px;z-index:50;transform:translateY(140%);transition:transform .3s ease-out}.mbar.on{transform:none}.mbar a{display:flex;align-items:center;justify-content:center;min-height:54px;border-radius:999px;font-weight:800;text-decoration:none;box-shadow:0 10px 24px -8px rgba(0,0,0,.45)}.mbar a:first-child{background:#17110D;color:#fff}.mbar a:last-child{background:#F4A91A;color:#17110D}.foot{padding-bottom:100px}}
 .k{transition:transform .25s ease-out,box-shadow .25s ease-out}.k:hover{transform:translateY(-6px);box-shadow:0 26px 50px -24px rgba(0,0,0,.45)}.k .ph img{transition:transform .5s ease-out}.k:hover .ph img{transform:scale(1.05)}
-.btn{transition:transform .2s ease-out,box-shadow .2s ease-out}.btn:hover{transform:translateY(-2px);box-shadow:0 10px 22px -10px rgba(0,0,0,.5)}.ft a{transition:transform .2s ease-out}.ft a:hover{transform:translateX(3px)}
+.btn{transition:transform .2s ease-out,box-shadow .2s ease-out}@media(hover:hover) and (pointer:fine){.btn:hover{transform:translateY(-2px);box-shadow:0 10px 22px -10px rgba(0,0,0,.5)}}.ft a{transition:transform .2s ease-out}.ft a:hover{transform:translateX(3px)}
 html.js .rv{opacity:0;transform:translateY(22px);transition:opacity .6s ease-out,transform .6s ease-out}html.js .rv.in{opacity:1;transform:none}
 html.js .hero h1,html.js .hero p,html.js .hero .btn{animation:su .7s ease-out both}html.js .hero p{animation-delay:.12s}html.js .hero .btn{animation-delay:.22s}
 html.js .hero .pic{animation:entra .9s ease-out .15s both}
@@ -83,11 +83,11 @@ html.js .hero .pic{animation:entra .9s ease-out .15s both}
 .nastro{display:flex;gap:20px;width:max-content;padding:10px 0 18px;will-change:transform}
 .c{width:272px;flex:0 0 auto;background:#1e1611;border:1px solid #33271f;border-radius:24px;overflow:hidden;display:flex;flex-direction:column;text-align:left;font:inherit;color:inherit;padding:0;cursor:pointer;transition:transform .35s cubic-bezier(.2,.8,.2,1),border-color .3s,box-shadow .35s;user-select:none;-webkit-user-drag:none}
 .gelo .c{background:#151e27;border-color:#24323f}
-.c:hover,.c:focus-visible{transform:translateY(-6px);border-color:var(--y);box-shadow:0 28px 50px -26px rgba(0,0,0,.9)}
-.gelo .c:hover,.gelo .c:focus-visible{border-color:#8EC5E8}
+.c:focus-visible{transform:translateY(-6px);border-color:var(--y);box-shadow:0 28px 50px -26px rgba(0,0,0,.9)}
+.gelo .c:focus-visible{border-color:#8EC5E8}
+@media(hover:hover) and (pointer:fine){.c:hover{transform:translateY(-6px);border-color:var(--y);box-shadow:0 28px 50px -26px rgba(0,0,0,.9)}.gelo .c:hover{border-color:#8EC5E8}.c:hover .ph img{transform:scale(1.06)}}
 .c .ph{position:relative;aspect-ratio:4/5;overflow:hidden;width:100%;background:#2a201a}
 .c .ph img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.8,.2,1);pointer-events:none}
-.c:hover .ph img{transform:scale(1.06)}
 .c .ph:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(10,7,5,.88))}
 .c .nm{position:absolute;left:18px;right:18px;bottom:16px;z-index:1}
 .c .chip{display:inline-block;font-size:.66rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:4px 9px;border-radius:999px;background:var(--y);color:var(--ink);margin-bottom:8px}
@@ -206,13 +206,13 @@ dialog#scheda[open]{grid-template-columns:1fr;max-height:88vh;overflow-y:auto}
 .sch-a .btn{width:100%;justify-content:center}
 }
 @media(prefers-reduced-motion:reduce){.c,.c .ph img{transition:none}.pin:after{animation:none}}
-p,li,dd,.lead{text-wrap:pretty}h1,h2,h3,h4{text-wrap:balance}</style></head><body>
+p,li,dd,.lead{text-wrap:pretty}h1,h2,h3,h4{text-wrap:balance}.testo .radici{margin-top:18px;font-weight:700;font-style:italic;font-size:1.05rem}</style></head><body>
 <div id="bar" class="bar"><div class="wrap"><a href="#"><img src="img/logo.png" alt="Lady Pizza"></a><nav><a href="#cat">Catalogo</a><a href="#chi-siamo">Chi siamo</a><a href="#contatti">Contatti</a></nav><a class="call" href="tel:+390670161571">Chiama</a></div></div>
 <div id="mbar" class="mbar"><a href="tel:+390670161571">Chiama</a><a href="https://wa.me/393511499341">WhatsApp</a></div>
 
 <div class="heroW">
 <header class="wrap top"><a href="#" class="lg"><img src="img/logo.png" alt="Lady Pizza"><span class="slog">Roman Craft.<br>Global Standard.</span></a><nav><a href="#cat">Catalogo</a><a href="#chi-siamo">Chi siamo</a><a href="#contatti">Contatti</a></nav><a class="call" href="tel:+390670161571">Chiama</a></header>
-<div class="wrap hero"><div><h1>Basi per pizza pronte da&nbsp;farcire</h1><p>Tonde, in teglia e pinsa, con <b>48&nbsp;ore di&nbsp;lievitazione</b>.<br>Le farcisci, le passi in forno e sono&nbsp;pronte.</p><a class="btn" href="https://wa.me/393511499341">Scrivici su WhatsApp</a><a class="btn o" href="#cat">Il catalogo</a></div><div class="pic"><img src="img/pinsa.jpg" alt="Pinsa precotta Lady Pizza"></div></div>
+<div class="wrap hero"><div><h1>Basi per pizza pronte da&nbsp;farcire</h1><p>Per ristoranti, pizzerie e bar: tonde, in teglia e pinsa, con&nbsp;<b>48&nbsp;ore di&nbsp;lievitazione</b>.<br>Le farcisci, le passi in forno e sono&nbsp;pronte.</p><a class="btn" href="https://wa.me/393511499341">Scrivici su WhatsApp</a><a class="btn o" href="#cat">Il catalogo</a></div><div class="pic"><img src="img/pinsa.jpg" alt="Pinsa precotta Lady Pizza"></div></div>
 </div>
 
 <main>
@@ -239,7 +239,7 @@ p,li,dd,.lead{text-wrap:pretty}h1,h2,h3,h4{text-wrap:balance}</style></head><bod
 
 <section class="fascia" aria-label="Roman Craft. Global Standard."><img src="img/teglia.jpg" alt="" loading="lazy"><div class="wrap"><p class="slg"><span>Roman Craft.</span> <em>Global Standard.</em></p><p class="chi">Lady Pizza · Roma, dal 2006</p></div></section>
 
-<section id="chi-siamo"><div class="wrap imp"><div class="impf"><img src="img/impasto.jpg" alt="Panetti di impasto Lady Pizza" loading="lazy"></div><div class="testo"><h2>Farina, acqua, sale<br>e lievito</h2><p>Lady Pizza nasce nel 2006 per fare basi precotte di pizza tonda, pizza alla pala e pinsa; oggi fa basi bianche e pizze già condite. È un'azienda di famiglia, e la nuova generazione partecipa alla sua crescita.</p><p>Le basi si fanno a Roma, nel laboratorio di Via di Torrevecchia: farina, acqua, sale e lievito, senza grassi, coloranti o conservanti. L'impasto lievita <b>48&nbsp;ore</b> e i pizzaioli lo lavorano in modo artigianale.</p><p class="squadra">Dietro ogni base Lady Pizza c'è il lavoro di un'intera squadra.</p><p class="reparti">Impasto, stesura, cottura, confezionamento, logistica, amministrazione e commerciale.</p></div></div></section>
+<section id="chi-siamo"><div class="wrap imp"><div class="impf"><img src="img/impasto.jpg" alt="Panetti di impasto Lady Pizza" loading="lazy"></div><div class="testo"><h2>Una buona pizza nasce dalle persone</h2><p>Lady Pizza nasce nel 2006 per fare basi precotte di pizza tonda, pizza alla pala e pinsa; oggi fa basi bianche e pizze già condite. È un'azienda di famiglia, e la nuova generazione partecipa alla sua crescita.</p><p>Le basi si fanno a Roma, nel laboratorio di Via di Torrevecchia: farina, acqua, sale e lievito, senza grassi, coloranti o conservanti. L'impasto lievita <b>48&nbsp;ore</b> e i pizzaioli lo lavorano in modo artigianale.</p><p class="squadra">Dietro ogni base Lady Pizza c'è il lavoro di un'intera squadra.</p><p class="reparti">Impasto, stesura, cottura, confezionamento, logistica, amministrazione e commerciale.</p><p class="radici">Le nostre radici sono romane. La nostra visione è globale.</p></div></div></section>
 
 <section id="contatti" style="padding-top:0;padding-bottom:0"><div class="wrap"><div class="end"><div class="endg">
 <div><h2>Assaggiale prima di ordinare</h2><p>Chiedici una campionatura o un preventivo, anche su&nbsp;WhatsApp. Niente listino: il prezzo dipende da prodotti e&nbsp;quantità.</p><a class="btn" href="tel:+390670161571">Chiama</a><a class="btn o" href="https://wa.me/393511499341">WhatsApp</a></div>
@@ -281,7 +281,7 @@ function glue(root){
   /* 1. parola breve o con apostrofo + parola successiva */
   t=t.replace(/(?<=^|[\s («])([A-Za-zÀ-ÿ]{1,5}|[A-Za-zÀ-ÿ]+['’])\s+(?=\S)/g,function(m,wd){var l=wd.toLowerCase();return (BREVI.indexOf(l)>-1||/['’]$/.test(wd))?wd+' ':m});
   /* 2. dopo virgola o due punti: frase breve tutta insieme */
-  t=t.replace(/([,:;])\s+([^,.;:!?]+?)(?=[,.;:!?]|$)/g,function(m,seg,fr){var f=fr.trim(),pz=f.split(/[ \t\n]+/),fine=/\s$/.test(fr)?' ':'';if(f.length<=maxc&&pz.length<=6)return seg+' '+pz.join(' ')+fine;if(pz.length>2){var q=pz.length>3?3:2;return seg+' '+pz.slice(0,q).join(' ')+' '+pz.slice(q).join(' ')+fine}return m});
+  t=t.replace(/([,:;])\s+([^,.;:!?]+?)(?=[,.;:!?]|$)/g,function(m,seg,fr){var f=fr.trim(),pz=f.split(/[ \t\n]+/),fine=(fr.match(/\s*$/)||[''])[0];if(f.length<=maxc&&pz.length<=6)return seg+' '+pz.join(' ')+fine;if(pz.length>2){var q=pz.length>3?3:2;return seg+' '+pz.slice(0,q).join(' ')+' '+pz.slice(q).join(' ')+fine}return m});
   /* 3. ultime due parole prima del punto e prime due dopo il punto */
   t=t.replace(/(\S+)\s+(\S+[.!?…])(?=\s|$)/g,'$1 $2');
   t=t.replace(/([.!?…]\s+)(\S+)\s+(?=\S)/g,'$1$2 ');
@@ -339,7 +339,8 @@ fm.addEventListener('submit',function(e){e.preventDefault();
 fm.querySelectorAll('input').forEach(function(i){i.addEventListener('input',function(){i.setCustomValidity('')})});
 
 /* ---- fasce che scorrono di continuo: si fermano col mouse sopra o col dito ---- */
-var file=[];
+var file=[],ignoraClick=0;
+addEventListener('click',function(e){if(Date.now()<ignoraClick){e.preventDefault();e.stopPropagation()}},true);
 document.querySelectorAll('.linea').forEach(function(L,k){
  var v=L.querySelector('.vista'),n=L.querySelector('.nastro');
  var orig=[].slice.call(n.children);
@@ -355,17 +356,23 @@ document.querySelectorAll('.linea').forEach(function(L,k){
  v.addEventListener('pointerleave',function(e){if(e.pointerType==='mouse')R.sopra=false});
  /* trascinamento col dito o col mouse */
  var x0=0,o0=0;
- v.addEventListener('pointerdown',function(e){R.tira=true;R.mosso=false;x0=e.clientX;o0=R.off;R.anim=null});
+ var y0=0,t0d=0;
+ v.addEventListener('pointerdown',function(e){R.tira=true;R.mosso=false;x0=e.clientX;y0=e.clientY;t0d=Date.now();o0=R.off;R.anim=null});
  v.addEventListener('pointermove',function(e){if(!R.tira)return;var dx=e.clientX-x0;if(Math.abs(dx)>6){if(!R.mosso){R.mosso=true;v.classList.add('tira');try{v.setPointerCapture(e.pointerId)}catch(_){}}R.off=o0-dx}});
- function lascia(e){if(!R.tira)return;R.tira=false;v.classList.remove('tira');R.riparte=Date.now()+(e.pointerType==='mouse'?0:1800)}
- v.addEventListener('pointerup',lascia);v.addEventListener('pointercancel',lascia);
- v.addEventListener('click',function(e){if(R.mosso){e.preventDefault();e.stopPropagation();R.mosso=false;return}
-  var b=e.target.closest('.c');if(!b)return;
+ function lascia(e){if(!R.tira)return;R.tira=false;v.classList.remove('tira');R.riparte=Date.now()+(e.pointerType==='mouse'?0:1800);
+  /* dito: tocco breve e fermo = apri la scheda subito, senza aspettare il click (su iPhone a volte non arriva) */
+  if(e.type==='pointerup'&&e.pointerType!=='mouse'&&!R.mosso&&Math.hypot(e.clientX-x0,e.clientY-y0)<10&&Date.now()-t0d<800){
+   var q=document.elementFromPoint(e.clientX,e.clientY),b=q&&q.closest('.c');if(!b||!v.contains(b))b=e.target.closest&&e.target.closest('.c');
+   if(b&&v.contains(b)){ignoraClick=Date.now()+700;azione(b)}}}
+ v.addEventListener('pointerup',lascia);v.addEventListener('pointercancel',lascia);addEventListener('pointerup',lascia);addEventListener('pointercancel',lascia);
+ function azione(b){
   if(b.dataset.az==='su'){vaiModulo('Prodotto personalizzato','');return}
   if(b.dataset.az==='atm'){document.querySelector('.atm').scrollIntoView({behavior:rm?'auto':'smooth',block:'center'});return}
-  apri(b.dataset.id)},true);
+  apri(b.dataset.id)}
+ v.addEventListener('click',function(e){if(R.mosso){e.preventDefault();e.stopPropagation();R.mosso=false;return}
+  var b=e.target.closest('.c');if(!b)return;azione(b)},true);
  /* tastiera */
- v.addEventListener('focusin',function(e){var c=e.target.closest('.c');if(!c)return;R.sopra=true;R.off=Math.max(0,c.offsetLeft-24)});
+ v.addEventListener('focusin',function(e){var c=e.target.closest('.c');if(!c||!c.matches(':focus-visible'))return;R.sopra=true;R.off=Math.max(0,c.offsetLeft-24)});
  v.addEventListener('focusout',function(){R.sopra=false});
  /* frecce */
  L.querySelectorAll('[data-v]').forEach(function(b){b.addEventListener('click',function(){var da=R.off,a=R.off+(+b.dataset.v)*passo(),t0=performance.now();R.anim={da:da,a:a,t0:t0}})});
