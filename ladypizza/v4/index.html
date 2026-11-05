@@ -128,7 +128,7 @@ html.js .hero .pic{animation:entra .9s ease-out .15s both}
 #chi-siamo .impf{position:sticky;top:96px}
 .testo p{color:#d8c9b4;margin-bottom:16px;font-size:1.06rem;line-height:1.65}
 .testo p b{color:#fff}
-#chi-siamo ul.pts{margin-top:22px}
+#chi-siamo ul.pts{margin-top:22px}.testo .squadra{margin-top:26px;padding-top:22px;border-top:1px solid var(--line);font-family:Anton,sans-serif;text-transform:uppercase;font-size:clamp(1.6rem,2.6vw,2.1rem);line-height:1.05;color:#fff;letter-spacing:.01em}
 
 /* Contatti */
 .endg{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
@@ -218,13 +218,13 @@ p,li,dd,.lead{text-wrap:pretty}h1,h2,h3,h4{text-wrap:balance}</style></head><bod
 <main>
 <section id="conviene"><div class="wrap">
 <div class="cv">
-<div class="cv-ph"><img src="img/tonda.jpg" alt="Basi tonde Lady Pizza già cotte" loading="lazy"><span class="cv-tag">Già cotte</span></div>
+<div class="cv-ph"><img src="img/tonda.jpg" alt="Basi tonde Lady Pizza già cotte" loading="lazy"></div>
 <div><h2>Cosa cambia nella tua cucina</h2>
 <ol class="righe">
 <li><div><b>Meno lavoro</b><span>Impasto, lievitazione e precottura sono già fatti.</span></div></li>
-<li><div><b>Servizio veloce</b><span>Nelle sere piene la base è già cotta: farcisci, inforni, servi.</span></div></li>
-<li><div><b>Scorte a scelta</b><span>Frigo (30 giorni) o freezer (12 mesi): ti organizzi come vuoi.</span></div></li>
-<li><div><b>Sempre uguale</b><span>Stesso impasto e 48 ore di lievitazione.</span></div></li>
+<li><div><b>Servizio veloce</b><span>Nelle sere piene si lavora più veloci e ai tavoli si aspetta meno.</span></div></li>
+<li><div><b>Scorte a scelta</b><span>In frigo o in freezer: ordini quando ti serve e ti organizzi come vuoi.</span></div></li>
+<li><div><b>Sempre uguale</b><span>Stesso impasto e stessa lavorazione: la base è sempre quella.</span></div></li>
 </ol></div>
 </div>
 <div class="sos"><p>Pizzaiolo in ferie o malato? Chiamaci: in&nbsp;24&nbsp;ore ti portiamo le basi.</p><a class="btn" href="tel:+390670161571">Chiama</a></div>
@@ -232,26 +232,25 @@ p,li,dd,.lead{text-wrap:pretty}h1,h2,h3,h4{text-wrap:balance}</style></head><bod
 </div></section>
 
 <section id="cat">
-<div class="wrap"><h2>Scegli la base per il tuo locale</h2><p class="lead">Le basi bianche ci sono in frigo (ATM) o surgelate (GELO). Le condite, solo surgelate. Tocca un prodotto per la&nbsp;scheda.</p></div>
-<div class="linea atm" data-linea="ATM"><div class="wrap lh"><div class="lh-t"><span class="sigla">ATM</span><div><h3>In frigo</h3><ul class="fatti"><li>Atmosfera modificata</li><li>30 giorni di riferimento</li><li>Per chi ordina spesso</li></ul></div></div><div class="frecce"><button type="button" data-v="-1" aria-label="Prodotto precedente"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button><button type="button" data-v="1" aria-label="Prodotto successivo"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button></div></div><div class="vista"><div class="nastro"></div></div></div>
-<div class="linea gelo" data-linea="GELO"><div class="wrap lh"><div class="lh-t"><span class="sigla">GELO</span><div><h3>In freezer</h3><ul class="fatti"><li>Surgelate</li><li>12 mesi di riferimento</li><li>Qui anche le pizze già condite</li></ul></div></div><div class="frecce"><button type="button" data-v="-1" aria-label="Prodotto precedente"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button><button type="button" data-v="1" aria-label="Prodotto successivo"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button></div></div><div class="vista"><div class="nastro"></div></div></div>
+<div class="wrap"><h2>Scegli la base per il tuo locale</h2><p class="lead">Tocca un prodotto per vedere la&nbsp;scheda.</p></div>
+<div class="linea atm" data-linea="ATM"><div class="wrap lh"><div class="lh-t"><span class="sigla">ATM</span><div><h3>In frigo</h3><ul class="fatti"><li>Atmosfera modificata</li><li>Durata 30 giorni</li><li>Per chi ordina spesso</li></ul></div></div><div class="frecce"><button type="button" data-v="-1" aria-label="Prodotto precedente"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button><button type="button" data-v="1" aria-label="Prodotto successivo"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button></div></div><div class="vista"><div class="nastro"></div></div></div>
+<div class="linea gelo" data-linea="GELO"><div class="wrap lh"><div class="lh-t"><span class="sigla">GELO</span><div><h3>In freezer</h3><ul class="fatti"><li>Surgelate</li><li>Durata 12 mesi</li><li>Anche le pizze già farcite</li></ul></div></div><div class="frecce"><button type="button" data-v="-1" aria-label="Prodotto precedente"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button><button type="button" data-v="1" aria-label="Prodotto successivo"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button></div></div><div class="vista"><div class="nastro"></div></div></div>
 </section>
 
 <section class="fascia" aria-label="Roman Craft. Global Standard."><img src="img/teglia.jpg" alt="" loading="lazy"><div class="wrap"><p class="slg"><span>Roman Craft.</span> <em>Global Standard.</em></p><p class="chi">Lady Pizza · Roma, dal 2006</p></div></section>
 
-<section id="chi-siamo"><div class="wrap imp"><div class="impf"><img src="img/impasto.jpg" alt="Panetti di impasto Lady Pizza" loading="lazy"></div><div class="testo"><h2>Farina, acqua, sale<br>e lievito</h2><p>Lady Pizza nasce nel 2006 per fare basi precotte di pizza tonda, pizza alla pala e pinsa, e oggi c'è anche la margherita già farcita. Sono pensate per chi lavora in cucina: ristoranti, pizzerie, bar, hotel, catering e distributori.</p><p>Le basi si fanno a Roma, nel laboratorio di Via di Torrevecchia: farina, acqua, sale e lievito, senza grassi, coloranti o conservanti. L'impasto lievita <b>48&nbsp;ore</b> e i pizzaioli lo lavorano in modo artigianale.</p><ul class="pts">
-<li><b>Fatte dai pizzaioli</b>Ogni base la lavorano i pizzaioli del&nbsp;laboratorio.</li><li><b>Una squadra</b>Dietro ogni base c'è il lavoro di un'intera squadra, dall'impasto all'amministrazione.</li><li><b>Di famiglia</b>Direzione familiare, con la nuova generazione nella&nbsp;gestione.</li></ul></div></div></section>
+<section id="chi-siamo"><div class="wrap imp"><div class="impf"><img src="img/impasto.jpg" alt="Panetti di impasto Lady Pizza" loading="lazy"></div><div class="testo"><h2>Farina, acqua, sale<br>e lievito</h2><p>Lady Pizza nasce nel 2006 per fare basi precotte di pizza tonda, pizza alla pala e pinsa; oggi c'è anche la margherita già farcita. È un'azienda di famiglia, e la nuova generazione partecipa alla sua crescita.</p><p>Le basi si fanno a Roma, nel laboratorio di Via di Torrevecchia: farina, acqua, sale e lievito, senza grassi, coloranti o conservanti. L'impasto lievita <b>48&nbsp;ore</b> e i pizzaioli lo lavorano in modo artigianale.</p><p class="squadra">Dietro ogni base Lady Pizza c'è il lavoro di un'intera squadra.</p></div></div></section>
 
 <section id="contatti" style="padding-top:0;padding-bottom:0"><div class="wrap"><div class="end"><div class="endg">
 <div><h2>Assaggiale prima di ordinare</h2><p>Una prova vale più di tante parole: chiedici una campionatura o un preventivo, anche su&nbsp;WhatsApp.</p><a class="btn" href="tel:+390670161571">Chiama</a><a class="btn o" href="https://wa.me/393511499341">WhatsApp</a></div>
-<form id="modulo"><select name="tipo" aria-label="Tipo di richiesta"><option>Preventivo</option><option>Campionatura</option><option>Prodotto personalizzato</option><option>Informazioni</option></select><input name="nome" placeholder="Come ti chiami?" autocomplete="name" required aria-label="Nome"><input name="locale" placeholder="Il tuo locale" aria-label="Locale"><input name="tel" type="tel" placeholder="Telefono" autocomplete="tel" required aria-label="Telefono"><textarea name="msg" placeholder="Per esempio: 10 cartoni di pinsa e 5 di tonda da 32 cm a settimana" aria-label="Messaggio"></textarea><button class="btn" type="submit">Invia su WhatsApp</button><small>Il messaggio parte dal tuo WhatsApp. <a href="privacy.html">Privacy</a></small></form>
+<form id="modulo"><select name="tipo" aria-label="Tipo di richiesta"><option>Campionatura</option><option>Preventivo</option><option>Prodotto personalizzato</option><option>Informazioni</option></select><input name="nome" placeholder="Come ti chiami?" autocomplete="name" required aria-label="Nome"><input name="locale" placeholder="Il tuo locale" aria-label="Locale"><input name="tel" type="tel" placeholder="Telefono" autocomplete="tel" required aria-label="Telefono"><textarea name="msg" placeholder="Per esempio: 10 cartoni di pinsa a settimana" aria-label="Messaggio"></textarea><button class="btn" type="submit">Invia su WhatsApp</button><small><a href="privacy.html">Privacy</a></small></form>
 </div></div>
-<div class="dove"><div id="mappa" role="img" aria-label="Mappa del laboratorio Lady Pizza in Via di Torrevecchia 1, Roma"></div><div class="dove-card"><b>Il laboratorio</b><span>Via di Torrevecchia 1, 00168 Roma</span><div class="az"><a href="https://www.google.com/maps/dir/?api=1&amp;destination=Via+di+Torrevecchia+1+Roma" target="_blank" rel="noopener">Indicazioni</a><a class="o" href="tel:+390670161571">Chiama</a></div></div></div>
+<div class="dove"><div id="mappa" role="img" aria-label="Mappa del laboratorio Lady Pizza in Via di Torrevecchia 1, Roma"></div><div class="dove-card"><b>Il laboratorio</b><span>Via di Torrevecchia 1, 00168 Roma</span><div class="az"><a href="https://www.google.com/maps/dir/?api=1&amp;destination=Via+di+Torrevecchia+1+Roma" target="_blank" rel="noopener">Indicazioni</a></div></div></div>
 </div></section>
 </main>
 
 <dialog id="scheda" aria-labelledby="sch-nome"><button type="button" class="chiudi" aria-label="Chiudi">✕</button><div class="sch-ph"></div><div class="sch-tx"><div class="sch-b"></div><h3 id="sch-nome"></h3><p class="sch-d"></p><dl></dl><p class="sch-n">Allergeni e valori nutrizionali: chiedi la scheda tecnica.</p><div class="sch-a"><button type="button" class="btn" data-tipo="Preventivo">Chiedi un preventivo</button><button type="button" class="btn o" data-tipo="Campionatura">Chiedi una campionatura</button></div></div></dialog>
-<footer class="foot"><div class="wrap"><div class="fg"><div class="fb"><img src="img/logo.png" alt="Lady Pizza"><p class="sl">Roman Craft. Global Standard.</p><p>Basi per pizza precotte dal 2006.<br>Un marchio di Sapienza srls.</p></div><div><h4>Contatti</h4><dl><dt>Telefono</dt><dd><a href="tel:+390670161571">06 70161571</a></dd><dt>Cellulare</dt><dd><a href="https://wa.me/393511499341">351 1499341</a></dd><dt>Email</dt><dd><a href="mailto:sapienzalp@gmail.com">sapienzalp@gmail.com</a></dd></dl></div><div><h4>Dove siamo</h4><dl><dt>Sede operativa</dt><dd>Via di Torrevecchia 1<br>00168 Roma</dd><dt>Sede legale</dt><dd>Via dei Savorelli 103<br>00165 Roma</dd></dl></div></div><div class="fbar"><span>Sapienza srls · P.IVA 05184210754 · <a href="privacy.html">Privacy e cookie</a></span><a class="firma" href="https://www.italiatopweb.it" target="_blank" rel="noopener" aria-label="Realizzato con cura da Italia Top Web"><span class="firma-t">Realizzato con cura da</span><svg viewBox="0 0 26.5 26.5" aria-hidden="true"><rect x="13.5" y="0" width="13" height="13" rx="1.5" fill="currentColor" fill-opacity=".45"/><rect x="0" y="6.5" width="20" height="20" rx="2" fill="currentColor"/></svg><b>Italia Top Web</b></a></div></div></footer><script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script><script>/* Catalogo Lady Pizza: per aggiungere o cambiare un prodotto basta modificare questa lista.
+<footer class="foot"><div class="wrap"><div class="fg"><div class="fb"><img src="img/logo.png" alt="Lady Pizza"><p class="sl">Roman Craft. Global Standard.</p><p>Basi per pizza precotte dal&nbsp;2006.</p></div><div><h4>Contatti</h4><dl><dt>Telefono</dt><dd><a href="tel:+390670161571">06 70161571</a></dd><dt>Cellulare</dt><dd><a href="https://wa.me/393511499341">351 1499341</a></dd><dt>Email</dt><dd><a href="mailto:sapienzalp@gmail.com">sapienzalp@gmail.com</a></dd></dl></div><div><h4>Dove siamo</h4><dl><dt>Sede operativa</dt><dd>Via di Torrevecchia 1<br>00168 Roma</dd><dt>Sede legale</dt><dd>Via dei Savorelli 103<br>00165 Roma</dd></dl></div></div><div class="fbar"><span>Sapienza srls · P.IVA 05184210754 · <a href="privacy.html">Privacy e cookie</a></span><a class="firma" href="https://www.italiatopweb.it" target="_blank" rel="noopener" aria-label="Realizzato con cura da Italia Top Web"><span class="firma-t">Realizzato con cura da</span><svg viewBox="0 0 26.5 26.5" aria-hidden="true"><rect x="13.5" y="0" width="13" height="13" rx="1.5" fill="currentColor" fill-opacity=".45"/><rect x="0" y="6.5" width="20" height="20" rx="2" fill="currentColor"/></svg><b>Italia Top Web</b></a></div></div></footer><script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script><script>/* Catalogo Lady Pizza: per aggiungere o cambiare un prodotto basta modificare questa lista.
    linee: ATM (in frigo) e/o GELO (surgelato) · img: nome del file in img/ (senza foto = "Foto in arrivo") */
 var BASE='Farina, acqua, sale e lievito. Senza grassi, coloranti o conservanti.';
 var PRODOTTI=[
@@ -265,7 +264,7 @@ var PRODOTTI=[
 {id:'crostino',nome:'Crostino',linee:['GELO'],breve:['Precotta e già farcita'],desc:'Pizza crostino precotta e già farcita.'},
 {id:'panini',nome:'Panini proteici',linee:['GELO'],breve:['5 per busta'],desc:'Panini proteici da forno.',conf:'5 per busta, 20 per cartone'}
 ];
-var CONS={ATM:'In frigo, in atmosfera modificata: 30 giorni di riferimento.',GELO:'Surgelata, in freezer: 12 mesi di riferimento.'};
+var CONS={ATM:'In frigo, in atmosfera modificata: durata 30 giorni.',GELO:'Surgelata, in freezer: durata 12 mesi.'};
 var WA='https://wa.me/393511499341';
 var LAB=[41.9366346,12.4234793];
 /* ---- a capo curati (Luca 28/09, 12/10, 05/11/2026): parole brevi legate alla successiva,
@@ -282,7 +281,7 @@ function glue(root){
   /* 1. parola breve o con apostrofo + parola successiva */
   t=t.replace(/(?<=^|[\s («])([A-Za-zÀ-ÿ]{1,5}|[A-Za-zÀ-ÿ]+['’])\s+(?=\S)/g,function(m,wd){var l=wd.toLowerCase();return (BREVI.indexOf(l)>-1||/['’]$/.test(wd))?wd+' ':m});
   /* 2. dopo virgola o due punti: frase breve tutta insieme */
-  t=t.replace(/([,:])\s+([^,.;:!?]+?)(?=[,.;:!?]|$)/g,function(m,seg,fr){var f=fr.trim(),pz=f.split(/[ \t\n]+/),fine=/\s$/.test(fr)?' ':'';if(f.length<=maxc&&pz.length<=6)return seg+' '+pz.join(' ')+fine;if(pz.length>2)return seg+' '+pz.slice(0,2).join(' ')+' '+pz.slice(2).join(' ')+fine;return m});
+  t=t.replace(/([,:;])\s+([^,.;:!?]+?)(?=[,.;:!?]|$)/g,function(m,seg,fr){var f=fr.trim(),pz=f.split(/[ \t\n]+/),fine=/\s$/.test(fr)?' ':'';if(f.length<=maxc&&pz.length<=6)return seg+' '+pz.join(' ')+fine;if(pz.length>2){var q=pz.length>3?3:2;return seg+' '+pz.slice(0,q).join(' ')+' '+pz.slice(q).join(' ')+fine}return m});
   /* 3. ultime due parole prima del punto e prime due dopo il punto */
   t=t.replace(/(\S+)\s+(\S+[.!?…])(?=\s|$)/g,'$1 $2');
   t=t.replace(/([.!?…]\s+)(\S+)\s+(?=\S)/g,'$1$2 ');
@@ -299,16 +298,16 @@ function byId(id){for(var i=0;i<PRODOTTI.length;i++)if(PRODOTTI[i].id===id)retur
 /* ---- schede del catalogo ---- */
 function card(p,linea){
  var b=el('button','c');b.type='button';b.dataset.id=p.id;
- var chip=linea==='ATM'?'Anche surgelata':(p.linee.length>1?'Anche in frigo':(p.id==='panini'?'Surgelati':'Solo surgelata'));
+ var chip='';
  var ph=p.img?'<div class="ph"><img src="img/'+p.img+'" alt="" draggable="false" loading="lazy"'+(p.pos?' style="object-position:'+p.pos+'"':'')+'>':'<div class="ph vuota"><img src="img/logo.png" alt="" draggable="false"><span class="presto">Foto in arrivo</span>';
- b.innerHTML=ph+'<div class="nm"><span class="chip">'+chip+'</span><h4>'+p.nome+'</h4></div></div><div class="tx"><ul>'+(p.breve||[]).map(function(m){return '<li>'+m+'</li>'}).join('')+'</ul><div class="ft"><span>'+(p.conf?p.conf.split(', ').pop():'')+'</span><i>Scheda →</i></div></div>';
+ b.innerHTML=ph+'<div class="nm"><h4>'+p.nome+'</h4></div></div><div class="tx"><ul>'+(p.breve||[]).map(function(m){return '<li>'+m+'</li>'}).join('')+'</ul><div class="ft"><span>'+(p.conf?p.conf.split(', ').pop():'')+'</span><i>Scheda →</i></div></div>';
  return b}
-function extra(cls,chip,tit,txt,az,dato){var b=el('button','c extra '+cls,'<div><span class="chip">'+chip+'</span><h4>'+tit+'</h4><p>'+txt+'</p></div><div class="ft"><span></span><i>'+az+'</i></div>');b.type='button';b.dataset.az=dato;return b}
+function extra(cls,chip,tit,txt,az,dato){var b=el('button','c extra '+cls,'<div><h4>'+tit+'</h4><p>'+txt+'</p></div><div class="ft"><span></span><i>'+az+'</i></div>');b.type='button';b.dataset.az=dato;return b}
 var nAtm=document.querySelector('.atm .nastro'),nGelo=document.querySelector('.gelo .nastro');
 PRODOTTI.forEach(function(p){if(p.linee.indexOf('ATM')>-1)nAtm.appendChild(card(p,'ATM'))});
-nAtm.appendChild(extra('y','Personalizzati','Un formato tutto tuo','Misure, peso o impasto diversi. Si parte da un preventivo, perché costa più della base standard.','Chiedi →','su'));
+nAtm.appendChild(extra('y','Personalizzati','Un formato tutto tuo','Misure, peso o impasto su richiesta, con un preventivo dedicato.','Chiedi →','su'));
 PRODOTTI.forEach(function(p){if(p.linee.length===1&&p.linee[0]==='GELO')nGelo.appendChild(card(p,'GELO'))});
-nGelo.appendChild(extra('ice','Anche surgelate','Tutte le basi','Tonda, pinsa e teglie: le trovi nella fila ATM, anche surgelate.','Vedi →','atm'));
+nGelo.appendChild(extra('ice','Anche surgelate','Tutte le basi','Tonda, pinsa e teglie ci sono anche surgelate: le trovi qui sopra.','Vedi →','atm'));
 
 /* ---- scheda prodotto ---- */
 var dlg=document.getElementById('scheda'),corrente=null,aperta=false;
@@ -344,7 +343,7 @@ var file=[];
 document.querySelectorAll('.linea').forEach(function(L,k){
  var v=L.querySelector('.vista'),n=L.querySelector('.nastro');
  var orig=[].slice.call(n.children);
- var R={v:v,n:n,off:0,giro:0,sopra:false,tira:false,mosso:false,riparte:0,vis:true,anim:null,vel:(tocco?30:40)*(k?0.85:1)};
+ var R={v:v,n:n,off:-Math.max(24,(innerWidth-1132)/2),giro:0,sopra:false,tira:false,mosso:false,riparte:0,vis:true,anim:null,vel:(tocco?30:40)*(k?0.85:1)};
  function clona(){orig.forEach(function(c){var x=c.cloneNode(true);x.setAttribute('aria-hidden','true');x.tabIndex=-1;n.appendChild(x)})}
  clona();
  R.misura=function(){R.giro=n.children[orig.length].offsetLeft-n.children[0].offsetLeft;
